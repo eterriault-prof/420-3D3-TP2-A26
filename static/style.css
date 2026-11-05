@@ -1,0 +1,356 @@
+/* ===== Palette & polices ===== */
+:root {
+    --fond: #121212;
+    --surface: #1c1c1c;
+    --bordure: #2e2e2e;
+    --texte: #ececec;
+    --texte-2: #c4c4c4;
+    --texte-attenue: #8f8f8f;
+    --accent: #ff8a3d;
+    --accent-clair: #ffad75;
+    --secondaire: #14b8a6;
+    --secondaire-clair: #2dd4bf;
+    --secondaire-fond: #134e4a;
+    --secondaire-texte: #99f6e4;
+    --police-titre: 'Unbounded', 'Segoe UI', system-ui, sans-serif;
+    --police-texte: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Titres, logo et prix en Unbounded */
+.logo, h1, h2, .prix, .prix-detail, .btn-panier, .enfant-prix {
+    font-family: var(--police-titre);
+}
+
+h1 {
+    letter-spacing: -0.02em;
+}
+
+/* ===== Base ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--police-texte);
+    background: var(--fond);
+    color: var(--texte);
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===== Header ===== */
+header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--bordure);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-contenu {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* ===== Main ===== */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* ===== Catalogue ===== */
+.catalogue-entete {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.catalogue-entete h1 {
+    font-size: 1.8rem;
+    color: var(--accent);
+}
+
+.controles {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.groupe-controle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.label-controle {
+    color: var(--texte-attenue);
+    font-size: 0.9rem;
+}
+
+.boutons {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.btn {
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    background: var(--surface);
+    border: 1px solid var(--bordure);
+    color: var(--texte-2);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.btn:hover {
+    background: var(--bordure);
+    color: #fff;
+}
+
+.btn.actif {
+    background: var(--accent);
+    color: var(--fond);
+    border-color: var(--accent);
+    font-weight: 600;
+}
+
+/* ===== Grille produits ===== */
+.grille-produits {
+    display: grid;
+    gap: 1.2rem;
+}
+
+.grille-produits.compact {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+.grille-produits.detaille {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* ===== Carte produit ===== */
+.carte {
+    background: var(--surface);
+    border: 1px solid var(--bordure);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.15s, border-color 0.15s;
+    display: block;
+}
+
+.carte:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+}
+
+.carte.bundle {
+    border-color: var(--secondaire);
+}
+
+.carte img {
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    display: block;
+}
+
+.carte-info {
+    padding: 0.8rem;
+}
+
+.carte-info h2 {
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+    color: var(--texte);
+}
+
+.carte-info .description {
+    font-size: 0.8rem;
+    color: var(--texte-attenue);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.carte-info .nb-items {
+    font-size: 0.8rem;
+    color: var(--secondaire-clair);
+    margin-bottom: 0.3rem;
+}
+
+.carte-info .ventes {
+    font-size: 0.75rem;
+    color: var(--texte-attenue);
+    margin-bottom: 0.5rem;
+}
+
+.carte-info .prix {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.badge-bundle {
+    display: inline-block;
+    background: var(--secondaire-fond);
+    color: var(--secondaire-texte);
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    margin-top: 0.3rem;
+}
+
+/* ===== Page détail ===== */
+.detail-produit {
+    max-width: 900px;
+}
+
+.retour {
+    display: inline-block;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.retour:hover {
+    text-decoration: underline;
+}
+
+.detail-contenu {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.detail-image {
+    width: 320px;
+    border-radius: 10px;
+    border: 1px solid var(--bordure);
+    flex-shrink: 0;
+}
+
+.detail-info h1 {
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+}
+
+.detail-info .description {
+    color: var(--texte-2);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.prix-detail {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.detail-info .ventes {
+    color: var(--texte-attenue);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-panier {
+    background: var(--accent);
+    color: var(--fond);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.btn-panier:hover {
+    background: var(--accent-clair);
+}
+
+/* ===== Contenu bundle ===== */
+.contenu-bundle h2 {
+    font-size: 1.2rem;
+    color: var(--secondaire-clair);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--bordure);
+}
+
+.liste-enfants {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.enfant-lien {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--bordure);
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    transition: border-color 0.15s;
+}
+
+.enfant-lien:hover {
+    border-color: var(--accent);
+}
+
+.enfant-lien.est-bundle {
+    border-color: var(--secondaire);
+}
+
+.enfant-lien img {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.enfant-lien div {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.enfant-nom {
+    font-size: 0.95rem;
+    color: var(--texte);
+}
+
+.enfant-prix {
+    margin-left: auto;
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 0.95rem;
+}

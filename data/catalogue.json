@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "type": "produit",
+    "nom": "Fleuve Noir",
+    "description": "Un RPG d'exploration dans un Montréal dystopique des années 2080. Infiltrez les factions, naviguez le fleuve contaminé et découvrez la vérité sur la disparition des Lumières.",
+    "prix": 24.99,
+    "nb_ventes": 8400,
+    "image_url": "/static/images/fleuve-noir.jpg"
+  },
+  {
+    "id": 2,
+    "type": "produit",
+    "nom": "Fleuve Noir : Le Souterrain",
+    "description": "DLC officiel de Fleuve Noir. Descendez sous la ville et explorez un réseau de tunnels oubliés peuplés de factions rivales. Nécessite le jeu de base.",
+    "prix": 12.99,
+    "nb_ventes": 5100,
+    "image_url": "/static/images/souterrain.jpg"
+  },
+  {
+    "id": 3,
+    "type": "produit",
+    "nom": "Les Plaines",
+    "description": "Un jeu de survie en monde ouvert dans les prairies canadiennes. Construisez un refuge, chassez, et affrontez des hivers impitoyables dans une nature hostile et magnifique.",
+    "prix": 19.99,
+    "nb_ventes": 6200,
+    "image_url": "/static/images/les-plaines.jpg"
+  },
+  {
+    "id": 4,
+    "type": "produit",
+    "nom": "Boréal",
+    "description": "Une aventure narrative dans la forêt nordique québécoise. Suivez Mara, une chercheuse isolée, qui découvre que la forêt autour de sa station cache une présence ancienne.",
+    "prix": 21.99,
+    "nb_ventes": 7300,
+    "image_url": "/static/images/boreal.jpg"
+  },
+  {
+    "id": 5,
+    "type": "produit",
+    "nom": "Boréal : Hiver Éternel",
+    "description": "DLC officiel de Boréal. Une nouvelle région enneigée s'ouvre, révélant les origines de la présence ancienne. Une conclusion de 4 heures à l'histoire de Mara. Nécessite le jeu de base.",
+    "prix": 9.99,
+    "nb_ventes": 4800,
+    "image_url": "/static/images/hiver-eternel.jpg"
+  },
+  {
+    "id": 6,
+    "type": "produit",
+    "nom": "Citadelle",
+    "description": "Un jeu de stratégie médiéval au tour par tour. Gérez vos ressources, construisez vos défenses et repoussez des vagues d'envahisseurs dans des cartes procédurales.",
+    "prix": 17.99,
+    "nb_ventes": 4500,
+    "image_url": "/static/images/citadelle.jpg"
+  },
+  {
+    "id": 7,
+    "type": "bundle",
+    "nom": "Édition Complète Fleuve Noir",
+    "description": "Le jeu Fleuve Noir et son DLC Le Souterrain réunis. L'histoire complète de l'univers dystopique de GameNeuve, du fleuve contaminé aux tunnels souterrains.",
+    "prix": 37.98,
+    "nb_ventes": 3200,
+    "image_url": "/static/images/bundle-fleuve-noir.jpg",
+    "rabais": 0.20,
+    "enfants": [1, 2]
+  },
+  {
+    "id": 8,
+    "type": "bundle",
+    "nom": "Édition Complète Boréal",
+    "description": "Le jeu Boréal et son DLC Hiver Éternel en un seul achat. Vivez l'intégralité de l'aventure de Mara dans la forêt nordique, jusqu'à sa conclusion.",
+    "prix": 31.98,
+    "nb_ventes": 2900,
+    "image_url": "/static/images/bundle-boreal.jpg",
+    "rabais": 0.20,
+    "enfants": [4, 5]
+  },
+  {
+    "id": 9,
+    "type": "bundle",
+    "nom": "Pack Découverte GameNeuve",
+    "description": "Deux univers distincts pour découvrir le style GameNeuve : la survie dans les prairies avec Les Plaines, et la stratégie médiévale avec Citadelle.",
+    "prix": 37.98,
+    "nb_ventes": 1800,
+    "image_url": "/static/images/bundle-decouverte.jpg",
+    "rabais": 0.15,
+    "enfants": [3, 6]
+  },
+  {
+    "id": 10,
+    "type": "bundle",
+    "nom": "Méga Pack GameNeuve",
+    "description": "L'intégrale GameNeuve : les deux éditions complètes (Fleuve Noir et Boréal) et le Pack Découverte (Les Plaines et Citadelle). Six produits, un seul achat avantageux.",
+    "prix": 107.94,
+    "nb_ventes": 740,
+    "image_url": "/static/images/bundle-mega-pack.jpg",
+    "rabais": 0.30,
+    "enfants": [7, 8, 9]
+  }
+]

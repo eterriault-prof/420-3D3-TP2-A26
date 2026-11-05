@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block titre %}GameNeuve — Catalogue{% endblock %}
+
+{% block contenu %}
+<div class="catalogue-entete">
+    <h1>Catalogue</h1>
+
+    <div class="controles">
+        <div class="groupe-controle">
+            <span class="label-controle">Trier par :</span>
+            <div class="boutons">
+                <a href="?tri=nom&affichage={{ affichage_actif }}"
+                   class="btn {% if tri_actif == 'nom' %}actif{% endif %}">Nom</a>
+                <a href="?tri=prix&affichage={{ affichage_actif }}"
+                   class="btn {% if tri_actif == 'prix' %}actif{% endif %}">Prix</a>
+                <a href="?tri=popularite&affichage={{ affichage_actif }}"
+                   class="btn {% if tri_actif == 'popularite' %}actif{% endif %}">Popularité</a>
+            </div>
+        </div>
+
+        <div class="groupe-controle">
+            <span class="label-controle">Affichage :</span>
+            <div class="boutons">
+                <a href="?tri={{ tri_actif }}&affichage=compact"
+                   class="btn {% if affichage_actif == 'compact' %}actif{% endif %}">Compact</a>
+                <a href="?tri={{ tri_actif }}&affichage=detaille"
+                   class="btn {% if affichage_actif == 'detaille' %}actif{% endif %}">Détaillé</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="grille-produits {{ affichage_actif }}">
+    {% for produit in produits %}
+    <a href="/produit/{{ produit.id }}" class="carte {% if produit.est_bundle %}bundle{% endif %}">
+        <img src="{{ produit.image_url }}" alt="{{ produit.nom }}">
+        <div class="carte-info">
+            <h2>{{ produit.nom }}</h2>
+
+            {% if affichage_actif == 'detaille' %}
+                <p class="description">{{ produit.description }}</p>
+                {% if produit.est_bundle %}
+                    <p class="nb-items">📦 {{ produit.nb_items }} jeux inclus</p>
+                {% endif %}
+                <p class="ventes">{{ produit.nb_ventes }} ventes</p>
+            {% endif %}
+
+            <p class="prix">{{ "%.2f"|format(produit.prix_total) }} $</p>
+
+            {% if produit.est_bundle %}
+                <span class="badge-bundle">Bundle</span>
+            {% endif %}
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

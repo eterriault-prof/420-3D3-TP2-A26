@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block titre %}{{ produit.nom }} — GameNeuve{% endblock %}
+
+{% block contenu %}
+<div class="detail-produit">
+    <a href="/" class="retour">← Retour au catalogue</a>
+
+    <div class="detail-contenu">
+        <img src="{{ produit.image_url }}" alt="{{ produit.nom }}" class="detail-image">
+
+        <div class="detail-info">
+            <h1>{{ produit.nom }}</h1>
+            <p class="description">{{ produit.description }}</p>
+            <p class="prix-detail">{{ "%.2f"|format(produit.prix_total()) }} $</p>
+            <p class="ventes">{{ produit.nb_ventes }} ventes</p>
+
+            <button class="btn-panier" onclick="alert('Ajouté au panier ! (fonctionnalité simulée)')">
+                🛒 Ajouter au panier
+            </button>
+        </div>
+    </div>
+
+    {% if produit.est_bundle() %}
+    <div class="contenu-bundle">
+        <h2>Ce bundle contient :</h2>
+        <ul class="liste-enfants">
+            {% for enfant in produit.enfants %}
+            <li>
+                <a href="/produit/{{ enfant.id }}" class="enfant-lien {% if enfant.est_bundle() %}est-bundle{% endif %}">
+                    <img src="{{ enfant.image_url }}" alt="{{ enfant.nom }}">
+                    <div>
+                        <span class="enfant-nom">{{ enfant.nom }}</span>
+                        {% if enfant.est_bundle() %}
+                            <span class="badge-bundle">Bundle</span>
+                        {% endif %}
+                        <span class="enfant-prix">{{ "%.2f"|format(enfant.prix_total()) }} $</span>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
