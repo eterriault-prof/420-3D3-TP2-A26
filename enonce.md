@@ -46,6 +46,8 @@ Le fichier `data/catalogue.json` contient les produits suivants. Vous n'avez pas
 
 > **Note** : Le Méga Pack contient des bundles qui contiennent eux-mêmes des produits. C'est précisément cette imbrication que le patron Composite doit gérer élégamment — et que le code de base gère avec des boucles imbriquées sur trois niveaux.
 
+> **Note #2** : Le prix d'un bundle est calculé en fonction du prix de ses enfants, puis en appliquant un certain rabais, tel qu'indiqué dans le tableau ci-dessus.
+
 ---
 
 ## Ce que vous recevez
@@ -141,40 +143,44 @@ Assurez-vous que votre dépôt est propre avant la remise : pas de `__pycache__`
 
 ## Grille d'évaluation
 
-### Patron Composite `/40`
-
+### Code remis `/50`
+ 
+#### Patron Composite `/25`
+ 
 | Critère | Points |
 |---|---|
-| `Composant` abstrait avec les bonnes méthodes abstraites | /8 |
-| `Feuille` et `Composite` abstraits correctement définis | /7 |
-| `ProduitNumerique` hérite de `Feuille`, implémente toutes les méthodes | /8 |
-| `Bundle` hérite de `Composite`, délègue récursivement sans `isinstance` | /10 |
-| Organisation en fichiers cohérente (`models/composant.py`, etc.) | /7 |
-
-### Patron Stratégie `/35`
-
+| Une hiérarchie de classes modélise correctement les produits et les regroupements | /10 |
+| Le calcul du prix et du nombre d'items fonctionne à n'importe quel niveau d'imbrication | /10 |
+| Organisation du code en fichiers cohérente et lisible | /5 |
+ 
+#### Patron Stratégie `/25`
+ 
 | Critère | Points |
 |---|---|
-| `StrategieTri` abstraite avec la bonne signature | /5 |
-| Trois stratégies de tri concrètes correctement implémentées | /10 |
-| `StrategieAffichage` abstraite avec la bonne signature | /5 |
-| Deux stratégies d'affichage concrètes correctement implémentées | /10 |
-| `Catalogue.afficher_produits()` reçoit des instances, délègue correctement | /5 |
-
-### Qualité du code `/10`
-
+| Une hiérarchie de classes encapsule les comportements de tri | /10 |
+| Une hiérarchie de classes encapsule les comportements d'affichage | /10 |
+| Le catalogue délègue correctement aux stratégies reçues en paramètre | /5 |
+ 
+---
+ 
+### Défense orale `/50`
+ 
+#### Compréhension du patron Composite `/25`
+ 
 | Critère | Points |
 |---|---|
-| Annotations de type (`-> float`, `list[Composant]`, etc.) | /4 |
-| Code lisible, nommage cohérent, pas de redondance inutile | /3 |
-| Dépôt propre (`.gitignore`, pas de fichiers inutiles) | /3 |
-
-### Défense orale `/15`
-
+| L'étudiant explique pourquoi une hiérarchie de classes résout le problème mieux que le code de base | /10 |
+| L'étudiant démontre que son code gère l'imbrication sans cas particuliers | /10 |
+| L'étudiant justifie ses choix de découpage (classes, fichiers, nommage) | /5 |
+ 
+#### Compréhension du patron Stratégie `/25`
+ 
 | Critère | Points |
 |---|---|
-| Explication claire du rôle de `Composant` et pourquoi il est abstrait | /5 |
-| Démonstration que `Bundle` délègue sans connaître le type concret de ses enfants | /5 |
-| Explication du choix de découpage en fichiers et en classes | /5 |
-
+| L'étudiant explique l'avantage de passer des objets plutôt que des chaînes de caractères | /10 |
+| L'étudiant démontre comment ajouter un nouveau tri ou un nouvel affichage sans modifier le catalogue | /10 |
+| L'étudiant fait le lien entre ses choix de conception et les principes vus en cours | /5 |
+ 
+---
+ 
 **Total : /100**
