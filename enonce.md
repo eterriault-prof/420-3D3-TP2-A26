@@ -128,14 +128,20 @@ Après votre refactorisation, modifiez uniquement les endroits dans le fichier `
 
 ## Remise
 
-- **Dépôt** : fork du dépôt fourni sur GitHub, travail dans des branches, fusion sur `main` avant la remise
+Vous devez remplir le formulaire suivant pour me faire part de vos équipes **avant la date limite inscrite ci-dessous**. 
+    - **Groupe 02**: [3D3-A26 Équipes et remise URL TP2 (groupe 02)](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=fZIiqRI31kuSUUlrEYB_qCr_VvmTz8pMlcGltMEVD6pUNE9HU09SSjZGWkhGNEc3RzRIUzg1Q1lCRy4u) (**avant le lundi 16 novembre à 23h59**)
+    - **Groupe 01**: [3D3-A26 Équipes et remise URL TP2 (groupe 01](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=fZIiqRI31kuSUUlrEYB_qCr_VvmTz8pMlcGltMEVD6pUQzhDQkREWFlJQVlXWlA0T0Q2SjkzUjhLWC4u) (**avant le vendredi 20 novembre à 23h59**)
+
+- **Dépôt** : fork du dépôt fourni sur GitHub, travail dans des branches, fusion sur `main` avant la remise. Assurez-vous d'ajouter `eterriault-prof` comme collaborateur)
 - **Date limite** : 
-    - **Groupe 02**: Dimanche 29 novembre à 23h59
-    - **Groupe 01**: Lundi 30 novembre à 23h59
+    - **Groupe 02**: Mardi 1er décembre à 23h59
+    - **Groupe 01**: Jeudi 3 décembre à 23h59
 
 - **Défense orale** : en classe, ~10 minutes par équipe
-    - **Groupe 02**: Lundi 30 novembre 
-    - **Groupe 01**: Mardi 1er décembre
+    - **Groupe 02**: Mercredi 2 décembre 
+    - **Groupe 01**: Vendredi 4 décembre
+ 
+L'horaire de l'examen oral sera envoyé quelques jours avant le cours.
 
 Assurez-vous que votre dépôt est propre avant la remise : pas de `__pycache__`, pas de fichiers temporaires, `.gitignore` inclus.
 
