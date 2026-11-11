@@ -128,11 +128,17 @@ Après votre refactorisation, modifiez uniquement les endroits dans le fichier `
 
 ## Remise
 
-Vous devez remplir le formulaire suivant pour me faire part de vos équipes **avant la date limite inscrite ci-dessous**. 
-    - **Groupe 02**: [3D3-A26 Équipes et remise URL TP2 (groupe 02)](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=fZIiqRI31kuSUUlrEYB_qCr_VvmTz8pMlcGltMEVD6pUNE9HU09SSjZGWkhGNEc3RzRIUzg1Q1lCRy4u) (**avant le lundi 16 novembre à 23h59**)
-    - **Groupe 01**: [3D3-A26 Équipes et remise URL TP2 (groupe 01](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=fZIiqRI31kuSUUlrEYB_qCr_VvmTz8pMlcGltMEVD6pUQzhDQkREWFlJQVlXWlA0T0Q2SjkzUjhLWC4u) (**avant le vendredi 20 novembre à 23h59**)
+### Remise des noms de coéquipiers et du URL de votre dépôt
 
-- **Dépôt** : fork du dépôt fourni sur GitHub, travail dans des branches, fusion sur `main` avant la remise. Assurez-vous d'ajouter `eterriault-prof` comme collaborateur)
+Vous devez remplir le formulaire suivant pour me faire part de vos équipes **avant la date limite inscrite ci-dessous**. 
+Avant de remplir le formulaire, assurez-vous d'ajouter `eterriault-prof` comme collaborateur
+
+- **Groupe 02**: [3D3-A26 Équipes et remise URL TP2 (groupe 02)](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=fZIiqRI31kuSUUlrEYB_qCr_VvmTz8pMlcGltMEVD6pUNE9HU09SSjZGWkhGNEc3RzRIUzg1Q1lCRy4u) (**avant le lundi 16 novembre à 23h59**)
+- **Groupe 01**: [3D3-A26 Équipes et remise URL TP2 (groupe 01](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=fZIiqRI31kuSUUlrEYB_qCr_VvmTz8pMlcGltMEVD6pUQzhDQkREWFlJQVlXWlA0T0Q2SjkzUjhLWC4u) (**avant le vendredi 20 novembre à 23h59**)
+
+### Remise du code et examen oral
+
+- **Dépôt** : fork du dépôt fourni sur GitHub, travail dans des branches, fusion sur `main` avant la remise. Assurez-vous d'ajouter `eterriault-prof` comme collaborateur.
 - **Date limite** : 
     - **Groupe 02**: Mardi 1er décembre à 23h59
     - **Groupe 01**: Jeudi 3 décembre à 23h59
