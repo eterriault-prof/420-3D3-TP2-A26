@@ -160,7 +160,14 @@ Assurez-vous que votre dépôt est propre avant la remise : pas de `__pycache__`
 | Une hiérarchie de classes encapsule les comportements de tri | /10 |
 | Une hiérarchie de classes encapsule les comportements d'affichage | /10 |
 | Le catalogue délègue correctement aux stratégies reçues en paramètre | /5 |
- 
+
+ ### Pénalités
+
+| Pénalité | Points |
+|---|---|
+| Fonctionnalités manquantes ou application non fonctionnelle | -/5 |
+| Qualité du code insuffisante (nommage, duplication, lisibilité) | -/5 |
+
 ---
  
 ### Défense orale `/50`
@@ -179,7 +186,7 @@ Assurez-vous que votre dépôt est propre avant la remise : pas de `__pycache__`
 |---|---|
 | L'étudiant explique l'avantage de passer des objets plutôt que des chaînes de caractères | /10 |
 | L'étudiant démontre comment ajouter un nouveau tri ou un nouvel affichage sans modifier le catalogue | /10 |
-| L'étudiant fait le lien entre ses choix de conception et les principes vus en cours | /5 |
+| L'étudiant justifie ses choix de découpage (classes, fichiers, nommage) | /5 |
  
 ---
  
