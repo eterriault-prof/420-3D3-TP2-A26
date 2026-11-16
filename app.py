@@ -16,6 +16,19 @@ from models1.StrategieTri.strategie_populaire import strategie_populaire
 app = Flask(__name__)
 catalogue = Catalogue("data/catalogue.json")
 
+# Dictionnaire des stratégies de tri
+strategies_tri = {
+    "nom": strategie_nom(),
+    "prix": strategie_prix(),
+    "popularite": strategie_populaire()
+}
+
+# Dictionnaire des stratégies d'affichage
+strategies_affichage = {
+    "compact": compact(),
+    "detaille": detaille()
+}
+
 
 @app.route("/")
 def index():
@@ -23,18 +36,7 @@ def index():
     affichage = request.args.get("affichage", "compact")
 
    
-    # Dictionnaire des stratégies de tri
-    strategies_tri = {
-        "nom": strategie_nom(),
-        "prix": strategie_prix(),
-        "popularite": strategie_populaire()
-    }
 
-    # Dictionnaire des stratégies d'affichage
-    strategies_affichage = {
-        "compact": compact(),
-        "detaille": detaille()
-    }
 
     # Sélection des stratégies
     tri_selectionne = strategies_tri.get(tri, strategies_tri["nom"])
