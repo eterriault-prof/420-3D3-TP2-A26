@@ -1,5 +1,7 @@
 import json
 from models import ProduitNumerique, Bundle
+from .StrategieTri.StrategieTrie import StrategieTrie
+from .StrategieAffichage.StrategieAffichage import StrategieAffichage
 
 
 class Catalogue:
@@ -46,40 +48,12 @@ class Catalogue:
     def obtenir(self, id: int):
         return self._produits.get(id)
 
-    def afficher_produits(self, tri: str, affichage: str) -> list[dict]:
+    def afficher_produits(self, tri: StrategieTrie , affichage: StrategieAffichage) -> list[dict]:
         produits = self.tous()
-
-        # Tri
-        if tri == "prix":
-            produits = sorted(produits, key=lambda p: p.prix_total())
-        elif tri == "popularite":
-            produits = sorted(produits, key=lambda p: p.nb_ventes, reverse=True)
-        elif tri == "nom":
-            produits = sorted(produits, key=lambda p: p.nom.lower())
+        produits = tri.trier(produits)
 
         # Affichage
-        resultat = []
-        for p in produits:
-            if affichage == "compact":
-                resultat.append({
-                    "id": p.id,
-                    "nom": p.nom,
-                    "prix_total": p.prix_total(),
-                    "image_url": p.image_url,
-                    "est_bundle": p.est_bundle(),
-                })
-            elif affichage == "detaille":
-                donnees = {
-                    "id": p.id,
-                    "nom": p.nom,
-                    "prix_total": p.prix_total(),
-                    "image_url": p.image_url,
-                    "description": p.description,
-                    "nb_ventes": p.nb_ventes,
-                    "est_bundle": p.est_bundle(),
-                }
-                if p.est_bundle():
-                    donnees["nb_items"] = p.nb_items()
-                resultat.append(donnees)
-
+        resultat = affichage.afficher(produits)
         return resultat
+
+        
