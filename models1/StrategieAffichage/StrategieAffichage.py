@@ -1,10 +1,12 @@
+
 from abc import ABC, abstractmethod
+
 
 class StrategieAffichage(ABC):
 
-     @abstractmethod
-     def afficher(produits : list)   -> list[dict]:
-          pass
+    @abstractmethod
+    def afficher(self, produits: list) -> list[dict]:
+        pass
 
 
 

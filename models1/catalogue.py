@@ -1,7 +1,7 @@
 import json
 from models import ProduitNumerique, Bundle
-from StrategieTri import StrategieTrie
-from StrategieAffichage import StrategieAffichage
+from .StrategieTri.StrategieTrie import StrategieTrie
+from .StrategieAffichage.StrategieAffichage import StrategieAffichage
 
 
 class Catalogue:

@@ -1,4 +1,4 @@
-from StrategieTrie import StrategieTrie
+from .StrategieTrie import StrategieTrie
 
 
 class strategie_prix(StrategieTrie):
