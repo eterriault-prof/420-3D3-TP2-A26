@@ -58,7 +58,7 @@
     "type": "bundle",
     "nom": "Édition Complète Fleuve Noir",
     "description": "Le jeu Fleuve Noir et son DLC Le Souterrain réunis. L'histoire complète de l'univers dystopique de GameNeuve, du fleuve contaminé aux tunnels souterrains.",
-    "prix": 37.98,
+    /*"prix": 37.98,*/
     "nb_ventes": 3200,
     "image_url": "/static/images/bundle-fleuve-noir.jpg",
     "rabais": 0.20,
@@ -69,7 +69,7 @@
     "type": "bundle",
     "nom": "Édition Complète Boréal",
     "description": "Le jeu Boréal et son DLC Hiver Éternel en un seul achat. Vivez l'intégralité de l'aventure de Mara dans la forêt nordique, jusqu'à sa conclusion.",
-    "prix": 31.98,
+    /*"prix": 31.98,*/
     "nb_ventes": 2900,
     "image_url": "/static/images/bundle-boreal.jpg",
     "rabais": 0.20,
@@ -80,7 +80,7 @@
     "type": "bundle",
     "nom": "Pack Découverte GameNeuve",
     "description": "Deux univers distincts pour découvrir le style GameNeuve : la survie dans les prairies avec Les Plaines, et la stratégie médiévale avec Citadelle.",
-    "prix": 37.98,
+    /*"prix": 37.98,*/
     "nb_ventes": 1800,
     "image_url": "/static/images/bundle-decouverte.jpg",
     "rabais": 0.15,
@@ -91,7 +91,7 @@
     "type": "bundle",
     "nom": "Méga Pack GameNeuve",
     "description": "L'intégrale GameNeuve : les deux éditions complètes (Fleuve Noir et Boréal) et le Pack Découverte (Les Plaines et Citadelle). Six produits, un seul achat avantageux.",
-    "prix": 107.94,
+    /*"prix": 107.94,*/
     "nb_ventes": 740,
     "image_url": "/static/images/bundle-mega-pack.jpg",
     "rabais": 0.30,

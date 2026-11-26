@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from catalogue import Catalogue
+from models.catalogue import Catalogue
 
 app = Flask(__name__)
 catalogue = Catalogue("data/catalogue.json")
