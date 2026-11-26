@@ -1,0 +1,27 @@
+from models.composant import Composant
+
+class Feuille(Composant):
+    pass
+
+class ProduitNumerique(Feuille):
+
+    def __init__(self, id: int, nom: str, description: str, prix: float,
+                 nb_ventes: int, image_url: str):
+        super().__init__(id, nom, description, prix, nb_ventes, image_url)
+        
+
+     
+    def prix_total(self) -> float:
+        return self.prix
+
+  
+    def nb_items(self) -> int:
+        return 1
+
+    
+    def est_bundle(self) -> bool:
+        return False
+
+
+        
+
