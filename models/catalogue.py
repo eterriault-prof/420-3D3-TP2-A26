@@ -1,22 +1,46 @@
 import json
-from composite import Bundle
-from feuille import ProduitNumerique
-from composant import Composant
+import re
+import sys
+from pathlib import Path
+
+from .composant import Composant
+
+# Les modules du patron Composite utilisent encore des imports absolus.
+# Cet alias permet de les importer comme membres du paquet ``models`` sans
+# modifier les fichiers du patron Composite.
+sys.modules.setdefault("composant", sys.modules[Composant.__module__])
+
+from .composite import Bundle
+from .feuille import ProduitNumerique
+from strategie.affichage_compact import AffichageCompact
+from strategie.affichage_detaille import AffichageDetaille
+from strategie.strategie_affichage import StrategieAffichage
 from strategie.strategie_tri import StrategieTri
 from strategie.tri_par_nom import TriParNom
-from strategie.tri_par_prix import TriParPrix
 from strategie.tri_par_popularite import TriParPopularite
+from strategie.tri_par_prix import TriParPrix
+
 
 class Catalogue:
 
-    def __init__(self, chemin_json: str, strategie_tri: StrategieTri = None):
+    def __init__(
+        self,
+        chemin_json: str,
+        strategie_tri: StrategieTri | None = None,
+        strategie_affichage: StrategieAffichage | None = None,
+    ):
         self._produits: dict[int, Composant] = {}
+        self._strategie_tri = strategie_tri or TriParNom()
+        self._strategie_affichage = strategie_affichage or AffichageCompact()
         self._charger(chemin_json)
-        self._strategie_tri = strategie_tri or TriParNom()  # Stratégie par défaut
 
     def _charger(self, chemin: str) -> None:
-        with open(chemin, encoding="utf-8") as f:
-            donnees = json.load(f)
+        contenu = Path(chemin).read_text(encoding="utf-8")
+
+        # Le fichier fourni contient des commentaires /* ... */, qui ne font
+        # pas partie de la norme JSON. On les ignore sans modifier les donnees.
+        contenu = re.sub(r"/\*.*?\*/", "", contenu, flags=re.DOTALL)
+        donnees = json.loads(contenu)
 
         for d in donnees:
             if d["type"] == "produit":
@@ -26,17 +50,16 @@ class Catalogue:
                     description=d["description"],
                     prix=d["prix"],
                     nb_ventes=d["nb_ventes"],
-                    image_url=d["image_url"]
+                    image_url=d["image_url"],
                 )
             else:
                 produit = Bundle(
                     id=d["id"],
                     nom=d["nom"],
                     description=d["description"],
-                    #prix=d["prix"],
                     nb_ventes=d["nb_ventes"],
                     image_url=d["image_url"],
-                    rabais=d.get("rabais", 0.0)
+                    rabais=d.get("rabais", 0.0),
                 )
             self._produits[produit.id] = produit
 
@@ -46,69 +69,68 @@ class Catalogue:
                 for enfant_id in d.get("enfants", []):
                     bundle.ajouter_items(self._produits[enfant_id])
 
-    def tous(self) -> list:
+    def tous(self) -> list[Composant]:
         return list(self._produits.values())
 
-    def obtenir(self, id: int):
+    def obtenir(self, id: int) -> Composant | None:
         return self._produits.get(id)
 
-    def definir_strategie_tri(self, strategie):
+    def definir_strategie_tri(self, strategie: StrategieTri) -> None:
         self._strategie_tri = strategie
 
-    def afficher_produits(self) -> list:
-        resultat = self._strategie_tri.trier(self.tous())
-        produits = self.tous()
+    def definir_strategie_affichage(
+        self, strategie: StrategieAffichage
+    ) -> None:
+        self._strategie_affichage = strategie
 
-        # Application du patron Stratégie
-        produits = self._strategie_tri.trier(produits)
+    def afficher_produits(
+        self,
+        strategie_tri: StrategieTri | str | None = None,
+        strategie_affichage: StrategieAffichage | str | None = None,
+    ) -> list[dict]:
+        """Trie puis formate les produits en deleguant aux deux strategies.
 
-        resultat = []
+        Les chaines sont acceptees temporairement pour conserver la
+        compatibilite avec le frontend fourni, que ce projet ne doit pas
+        modifier en dehors de sa section balisee.
+        """
+        tri = self._resoudre_tri(strategie_tri)
+        affichage = self._resoudre_affichage(strategie_affichage)
+        return affichage.afficher(tri.trier(self.tous()))
 
-        for p in produits:
+    def _resoudre_tri(
+        self, strategie: StrategieTri | str | None
+    ) -> StrategieTri:
+        if strategie is None:
+            return self._strategie_tri
+        if isinstance(strategie, StrategieTri):
+            return strategie
 
-            if affichage == "compact":
+        strategies = {
+            "nom": TriParNom,
+            "prix": TriParPrix,
+            "popularite": TriParPopularite,
+        }
+        try:
+            return strategies[strategie]()
+        except (KeyError, TypeError) as exc:
+            raise ValueError(f"Strategie de tri inconnue : {strategie}") from exc
 
-                resultat.append({
-                    "id": p.id,
-                    "nom": p.nom,
-                    "prix_total": p.prix_total(),
-                    "image_url": p.image_url,
-                    "est_bundle": p.est_bundle(),
-                })
+    def _resoudre_affichage(
+        self, strategie: StrategieAffichage | str | None
+    ) -> StrategieAffichage:
+        if strategie is None:
+            return self._strategie_affichage
+        if isinstance(strategie, StrategieAffichage):
+            return strategie
 
-            elif affichage == "detaille":
-
-                donnees = {
-                    "id": p.id,
-                    "nom": p.nom,
-                    "prix_total": p.prix_total(),
-                    "image_url": p.image_url,
-                    "description": p.description,
-                    "nb_ventes": p.nb_ventes,
-                    "est_bundle": p.est_bundle(),
-                }
-
-                if p.est_bundle():
-                    donnees["nb_items"] = p.nb_items()
-
-                resultat.append(donnees)
-
-        return resultat
-
-  
-catalogue = Catalogue("catalogue.json", TriParPrix())
-
-# Trier par prix
-produits = catalogue.afficher_produits("compact")
-
-# Changer de stratégie : popularité
-catalogue.definir_strategie_tri(TriParPopularite())
-
-# Trier par popularité
-produits = catalogue.afficher_produits("detaille")
-
-# Changer de stratégie : nom
-catalogue.definir_strategie_tri(TriParNom())
-
-# Trier par nom
-produits = catalogue.afficher_produits("compact")
+        strategies = {
+            "compact": AffichageCompact,
+            "detaille": AffichageDetaille,
+        }
+        try:
+            return strategies[strategie]()
+        except (KeyError, TypeError) as exc:
+            raise ValueError(
+                f"Strategie d'affichage inconnue : {strategie}"
+            ) from exc

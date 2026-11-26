@@ -1,4 +1,6 @@
-from strategie_tri import StrategieTri
+from strategie.strategie_tri import StrategieTri
+
+
 class TriParNom(StrategieTri):
     """Stratégie de tri par nom."""
     def trier(self, produits: list) -> list:
