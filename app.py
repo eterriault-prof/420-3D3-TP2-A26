@@ -1,6 +1,13 @@
 from flask import Flask, render_template, request
 from catalogue import Catalogue
 
+from Affichage.Afficher_Compact import Afficher_Compact
+from Affichage.Afficher_Détaillé import Afficher_Détaillé
+
+from Trier.Trier_Nom import Trier_Nom
+from Trier.Trier_Prix import Trier_Prix
+from Trier.Trier_Popularité import Trier_Popularité
+
 app = Flask(__name__)
 catalogue = Catalogue("data/catalogue.json")
 
@@ -11,8 +18,28 @@ def index():
     affichage = request.args.get("affichage", "compact")
 
     # ===== AJOUTER DU CODE ICI POUR INSTANCIER VOS STRATÉGIES APRÈS LE REFACTORING =====
+    # Choisir la stratégie de tri
+    if tri == "prix":
+        strategie_tri = Trier_Prix()
 
-    produits = catalogue.afficher_produits(tri, affichage) # Ligne à ajuster après le refactoring
+    elif tri == "popularite":
+        strategie_tri = Trier_Popularité()
+
+    else:
+        strategie_tri = Trier_Nom()
+
+
+    if affichage == "detaille":
+        strategie_affichage = Afficher_Détaillé()
+
+    else:
+        strategie_affichage = Afficher_Compact()
+
+
+    produits = catalogue.afficher_produits(
+        strategie_tri,
+        strategie_affichage
+    )
 
     return render_template(
         "catalogue.html",
@@ -20,6 +47,10 @@ def index():
         tri_actif=tri,
         affichage_actif=affichage,
     )
+
+    
+
+    
 
 
 @app.route("/produit/<int:id>")

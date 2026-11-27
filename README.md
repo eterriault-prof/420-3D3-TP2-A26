@@ -7,6 +7,8 @@ Catalogue de produits numériques du studio fictif **GameNeuve**, implémenté a
 - Python 3.10+/
 - Flask
 
+python -m venv venv
+\venv\Scripts\Activate.ps1
 Dans un environnement virtuel, installer Flask avec la commande suivante :
 ```bash
 pip install flask
