@@ -1,5 +1,6 @@
 import json
-from models import ProduitNumerique, Bundle
+from models.ProduitNum import ProduitNumerique
+from models.bundle import Bundle
 from .StrategieTri.StrategieTrie import StrategieTrie
 from .StrategieAffichage.StrategieAffichage import StrategieAffichage
 
@@ -29,7 +30,6 @@ class Catalogue:
                     id=d["id"],
                     nom=d["nom"],
                     description=d["description"],
-                    prix=d["prix"],
                     nb_ventes=d["nb_ventes"],
                     image_url=d["image_url"],
                     rabais=d.get("rabais", 0.0)
